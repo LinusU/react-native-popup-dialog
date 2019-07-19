@@ -42,6 +42,13 @@ export default class PopupDialog extends Component<DialogProps, State> {
     }
   }
 
+  componentWillUnmount() {
+    // always clean up sibling when unmounted
+    if (this.sibling) {
+      this.destroyDialog()
+    }
+  }
+
   handleDismiss = () => {
     const { onDismiss } = this.props;
     if (onDismiss) {
